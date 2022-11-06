@@ -1,0 +1,36 @@
+<mvc:View controllerName="sync.c201.housekeeper.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <f:FlexibleColumnLayout
+                    id="fcl"
+                    backgroundDesign="Solid"
+                >
+                    <!-- 화면 구성 배치-->
+
+                    <!-- 첫번째 페이지 -->
+                    <f:beginColumnPages>
+                        <mvc:XMLView
+                            id="beginView"
+                            viewName="sync.c201.housekeeper.view.View1"
+                            width="100%"></mvc:XMLView>
+                    </f:beginColumnPages>
+
+                    <!-- 두번째 페이지 -->
+                    <f:midColumnPages>
+                        <mvc:XMLView
+                            id="detailView"
+                            viewName="sync.c201.housekeeper.view.Detail"
+                            width="100%"></mvc:XMLView>
+                    </f:midColumnPages>
+                </f:FlexibleColumnLayout>
+            </pages>
+        </App>
+    </Shell>
+
+</mvc:View>

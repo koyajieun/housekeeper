@@ -1,0 +1,199 @@
+<mvc:View
+    controllerName="sync.c201.housekeeper.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants"
+>
+
+    <f:DynamicPage id="dynamicpage" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="false">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="하우스 키퍼" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:content>
+            <VBox fitContainer="true">
+                <fb:FilterBar
+                    id="filterbar"
+                    persistencyKey="myPersKey"
+                    useToolbar="false"
+                    search=".onSearch"
+                    showFilterConfiguration="false">
+                    <fb:filterItems>
+                        <fb:FilterItem name="Plant" label="지점코드">
+                            <fb:control>
+                                <ComboBox
+                                    id="plantInput"
+                                    selectedKey="{Main>/sSearchPlant}"
+                                    placeholder="지점을 입력하세요."
+                                    showSecondaryValues="true">
+                                    <items>
+                                        <core:ListItem
+                                            key="S"
+                                            text="서울지점"
+                                            additionalText="S" />
+                                        <core:ListItem
+                                            key="J"
+                                            text="제주지점"
+                                            additionalText="J" />
+                                    </items>
+                                </ComboBox>
+                            </fb:control>
+                        </fb:FilterItem>
+
+                        <fb:FilterItem name="Floor" label="층수">
+                            <fb:control>
+                                <ComboBox
+                                    id="floorInput"
+                                    selectedKey="{Main>/sSearchFloor}"
+                                    placeholder="층수를 입력하세요."
+                                    showSecondaryValues="true">
+                                    <items>
+                                        <core:ListItem
+                                            key="03"
+                                            text="3층" />
+                                        <core:ListItem
+                                            key="04"
+                                            text="4층" />
+                                        <core:ListItem
+                                            key="05"
+                                            text="5층" />
+                                        <core:ListItem
+                                            key="06"
+                                            text="6층" />
+                                        <core:ListItem
+                                            key="07"
+                                            text="7층" />
+                                        <core:ListItem
+                                            key="08"
+                                            text="8층" />
+                                        <core:ListItem
+                                            key="09"
+                                            text="9층" />
+                                        <core:ListItem
+                                            key="10"
+                                            text="10층" />
+                                        <core:ListItem
+                                            key="11"
+                                            text="11층" />
+                                    </items>
+                                </ComboBox>
+                            </fb:control>
+                        </fb:FilterItem>
+
+                        <fb:FilterItem name="Condx" label="방상태">
+                            <fb:control>
+                                <ComboBox
+                                    id="CondxInput"
+                                    selectedKey="{Main>/sSearchCondx}"
+                                    placeholder="방상태를 입력하세요."
+                                    showSecondaryValues="true">
+                                    
+                                    <items>
+                                      
+                                        <core:ListItem key="이용중" text="이용가능" />
+                                        <core:ListItem key="청소필요" text="청소필요" />
+                                        <core:ListItem key="청소완료" text="청소완료" />
+               
+                                    </items>
+                                </ComboBox>
+                            </fb:control>
+                        </fb:FilterItem>
+
+
+
+                        <fb:FilterItem name="Roomid" label="Room 번호">
+                            <fb:control>
+                                <Input
+                                    id="ponoInput"
+                                    value="{Main>/sSearchRoomid}"
+                                    placeholder="Roomid를 입력하세요."></Input>
+                            </fb:control>
+                        </fb:FilterItem>
+
+                    </fb:filterItems>
+
+                </fb:FilterBar>
+
+                <Bar>
+                    <contentRight>
+                        <Button text="저장" press="onPressSave" width="100px" type="Emphasized" />
+                    </contentRight>
+                </Bar>
+
+                <Table
+                    id="RoomTable"
+                    inset="false"
+                    updateFinished="onUpdateFinished"
+                    items="{Main>/oTableData}"
+                    class="sapFDynamicPageAlignContent"
+                    width="auto">
+                    <columns>
+                        <Column>
+                            <Text text="지점" />
+                        </Column>
+                        <Column>
+                            <Text text="층수" />
+                        </Column>
+                        <Column>
+                            <Text text="룸id" />
+                        </Column>
+                        <Column>
+                            <Text text="방 호수" />
+                        </Column>
+                        <Column>
+                            <Text text="룸타입" />
+                        </Column>
+                        <Column>
+                            <Text text="현재 방 상태" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem
+                            type="Navigation"
+                            press=".onListItemPress">
+                            <cells>
+                                <ObjectIdentifier title="{Main>Plant}"></ObjectIdentifier>
+                            </cells>
+                            <cells>
+                                <ObjectIdentifier title="{Main>Floor}"></ObjectIdentifier>
+                            </cells>
+                            <cells>
+                                <ObjectIdentifier title="{Main>Roomid}"></ObjectIdentifier>
+                            </cells>
+                            <cells>
+                                <ObjectIdentifier title="{Main>Roomno}"></ObjectIdentifier>
+                            </cells>
+                            <cells>
+                                <ObjectIdentifier title="{Main>Roomtp}"></ObjectIdentifier>
+                            </cells>
+                            <cells>
+                                <InputListItem>
+                                    <Select
+                                        id="CondxSelect"
+                                        forceSelection="true"
+                                        selectedKey="{Main>Condx}"
+                                        change=".onListItemPress"
+                                    >
+                                        <!-- <core:Item key="{Main>Condx}" text="{Main>Condx}" /> -->
+
+                                        <core:Item key="이용중" text="이용가능" />
+                                        <core:Item key="청소필요" text="청소필요" />
+                                        <core:Item key="청소완료" text="청소완료" />
+
+                                    </Select>
+                                </InputListItem>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGWC2SD1006_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="RoomMaterial" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Roomtp"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="지점 코드" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Roomtp" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="객실 타입" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Prodid" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="제품 ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="prod" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="제품명" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Strid" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="창고 ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Prodquan" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="0" sap:unicode="false" sap:label="제품 수량" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Produnit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="제품 단위" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="RoomHouseManager" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Roomid"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="지점 코드" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Roomid" Type="Edm.String" Nullable="false" MaxLength="9" sap:unicode="false" sap:label="객실 번호" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Roomno" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="객실번호" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Floor" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="객실층" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Roomtp" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="룸타입" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Condx" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="현재 객실 상태" sap:creatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Note" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="비고" sap:creatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="RoomHouseKeeper" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Roomid"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="지점 코드" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Roomid" Type="Edm.String" Nullable="false" MaxLength="9" sap:unicode="false" sap:label="객실 번호" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Roomno" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="객실번호" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Floor" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="객실층" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Roomtp" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="객실 타입" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Condx" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="현재 객실 상태" sap:creatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Note" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="비고" sap:creatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Roomstatus" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Roomid"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="지점 코드" sap:creatable="false"/>
+                <Property Name="Roomid" Type="Edm.String" Nullable="false" MaxLength="9" sap:unicode="false" sap:label="객실 번호" sap:creatable="false"/>
+                <Property Name="Roomno" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="객실 번호" sap:creatable="false"/>
+                <Property Name="Floor" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="객실 층" sap:creatable="false"/>
+                <Property Name="Roomtp" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="객실 타입" sap:creatable="false"/>
+                <Property Name="Condx" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="현재 객실 상태" sap:creatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Note" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="비고" sap:creatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZGWC2SD1006_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="RoomMaterialSet" EntityType="ZGWC2SD1006_SRV.RoomMaterial" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="RoomHouseManagerSet" EntityType="ZGWC2SD1006_SRV.RoomHouseManager" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="RoomHouseKeeperSet" EntityType="ZGWC2SD1006_SRV.RoomHouseKeeper" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="RoomstatusSet" EntityType="ZGWC2SD1006_SRV.Roomstatus" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://edu.bgis.co.kr:8001/sap/opu/odata/sap/ZGWC2SD1006_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://edu.bgis.co.kr:8001/sap/opu/odata/sap/ZGWC2SD1006_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

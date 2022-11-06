@@ -1,0 +1,106 @@
+<mvc:View
+    controllerName="sync.c201.housekeeper.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.uxap"
+    xmlns:layout="sap.ui.layout"
+>
+    <ObjectPageLayout
+        id="ObjectPageLayout"
+        showTitleInHeaderContent="true"
+        alwaysShowContentHeader="false"
+        preserveHeaderStateOnScroll="false"
+        headerContentPinnable="true"
+        isChildPage="true"
+        upperCaseAnchorBar="false">
+        <headerTitle>
+
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:Title text="{app>/detail/Roomno}" wrapping="true" />
+                </expandedHeading>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <headerContent>
+            <m:FlexBox wrap="Wrap"
+                fitContainer="true"
+                alignItems="Stretch">
+
+                <f:Avatar
+                    src="sap-icon://bed"
+                    backgroundColor="Accent7"
+                    displaySize="L"
+                    class="sapUiTinyMarginEnd" />
+
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:ObjectStatus title="층 수" text="{app>/detail/Floor}" />
+                    <m:ObjectStatus title="룸 id" text="{app>/detail/Roomid}" />
+                    <m:ObjectStatus title="방 호수" text="{app>/detail/Roomno}" />
+                    <m:ObjectStatus title="현재 방 상태" text="{app>/detail/Condx}" />
+                </layout:VerticalLayout>
+            </m:FlexBox>
+        </headerContent>
+
+        <sections>
+            <ObjectPageSection title="필요물품 리스트">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <m:Table
+                                id="mTable"
+                                items="{all>/filterMTable}"
+                                mode="MultiSelect"
+                                >
+                                <m:columns>
+                                    <m:Column>
+                                        <m:Text text="객실타입" />
+                                    </m:Column>
+
+                                    <m:Column>
+                                        <m:Text text="제품명" />
+                                    </m:Column>
+
+                                    <m:Column>
+                                        <m:Text text="수량" />
+                                    </m:Column>
+
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem>
+                                        <m:cells>
+                                            <m:ObjectIdentifier text="{all>Roomtp}"></m:ObjectIdentifier>
+                                            <m:ObjectIdentifier text="{all>prod}"></m:ObjectIdentifier>
+                                            <m:ObjectIdentifier text="{all>Prodquan}"></m:ObjectIdentifier>
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+
+                            <m:VBox>
+                                <m:Text text="특이사항" />
+                                <m:TextArea
+                                    width="100%"
+                                    height="100px"
+                                    value="{app>/detail/Note}"
+                                    valueState="Information"
+                                    placeholder="ValueState : Information"
+                                />
+
+
+                                <!-- <m:Text text="추가사항"/> -->
+                                <!-- <m:TextArea width="100%" height="100px" /> -->
+
+                                <m:Button text="저장" type="Emphasized" press="onPress" />
+
+
+                            </m:VBox>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>
